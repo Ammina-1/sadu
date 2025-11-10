@@ -348,7 +348,6 @@ class HeartSpawner {
     createHeart() {
         const heart = document.createElement('div');
         heart.className = 'heart';
-        heart.innerHTML = '💙';
         
         // Randomize position
         const x = Math.random() * (window.innerWidth - 40);
@@ -359,15 +358,17 @@ class HeartSpawner {
         const rotation = -30 + Math.random() * 60; // -30 to 30 degrees
         const duration = 2.5 + Math.random() * 2; // 2.5 - 4.5 seconds
         
-        // Randomize soft blue colors
+        // Randomize soft blue colors for the CSS heart
         const blueColors = ['#87CEEB', '#B0E0E6', '#ADD8E6', '#E6F3FF', '#C7D6E8'];
         const color = blueColors[Math.floor(Math.random() * blueColors.length)];
         
         heart.style.left = x + 'px';
         heart.style.top = y + 'px';
-        heart.style.color = color;
         heart.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
         heart.style.animationDuration = duration + 's';
+        
+        // Apply color to both pseudo-elements
+        heart.style.setProperty('--heart-color', color);
         
         this.container.appendChild(heart);
         
