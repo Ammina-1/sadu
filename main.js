@@ -310,6 +310,85 @@ const closeLetterModal = () => {
 window.closeLetterModal = closeLetterModal;
 window.showLetterModal = showLetterModal;
 
+// Heart Spawner for floating hearts
+class HeartSpawner {
+    constructor() {
+        this.container = document.querySelector('.hearts-container');
+        this.lastScroll = 0;
+        this.throttleDelay = 150;
+        this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!this.prefersReducedMotion && this.container) {
+            this.bindScrollEvent();
+        }
+    }
+    
+    bindScrollEvent() {
+        window.addEventListener('scroll', this.throttle(() => {
+            this.spawnHearts(Math.floor(Math.random() * 3) + 1); // 1-3 hearts
+        }, this.throttleDelay));
+    }
+    
+    throttle(func, delay) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+    
+    spawnHearts(count = 1) {
+        if (this.prefersReducedMotion || !this.container) return;
+        
+        for (let i = 0; i < count; i++) {
+            this.createHeart();
+        }
+    }
+    
+    createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💙';
+        
+        // Randomize position
+        const x = Math.random() * (window.innerWidth - 40);
+        const y = window.innerHeight + 50;
+        
+        // Randomize properties
+        const scale = 0.5 + Math.random() * 0.8; // 0.5 - 1.3
+        const rotation = -30 + Math.random() * 60; // -30 to 30 degrees
+        const duration = 2.5 + Math.random() * 2; // 2.5 - 4.5 seconds
+        
+        // Randomize soft blue colors
+        const blueColors = ['#87CEEB', '#B0E0E6', '#ADD8E6', '#E6F3FF', '#C7D6E8'];
+        const color = blueColors[Math.floor(Math.random() * blueColors.length)];
+        
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        heart.style.color = color;
+        heart.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
+        heart.style.animationDuration = duration + 's';
+        
+        this.container.appendChild(heart);
+        
+        // Remove heart after animation
+        heart.addEventListener('animationend', () => {
+            if (heart.parentNode) {
+                heart.parentNode.removeChild(heart);
+            }
+        });
+    }
+    
+    burst(count = 5) {
+        if (this.prefersReducedMotion) return;
+        this.spawnHearts(count);
+    }
+}
+
+// Initialize HeartSpawner and make it globally accessible
+const heartSpawner = new HeartSpawner();
+window.heartSpawner = heartSpawner;
+
 // Main app
 class App {
     constructor() {
