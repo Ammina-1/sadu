@@ -314,6 +314,15 @@ window.showLetterModal = showLetterModal;
 class HeartSpawner {
     constructor() {
         this.container = document.querySelector('.hearts-container');
+        
+        // Fallback: Create container if it doesn't exist
+        if (!this.container) {
+            this.container = document.createElement('div');
+            this.container.className = 'hearts-container';
+            this.container.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(this.container);
+        }
+        
         this.lastScroll = 0;
         this.throttleDelay = 150;
         this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
