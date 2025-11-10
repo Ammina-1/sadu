@@ -1006,14 +1006,70 @@ body {
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: var(--font-size-2xl);
+        font-size: 2rem !important;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
     
     .month-card {
-        padding: var(--space-lg);
+        padding: 1rem;
+        margin: 0.5rem;
+        min-height: 120px;
     }
     
     .modal-header h2 {
-        font-size: var(--font-size-2xl);
+        font-size: 1.5rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    .replay-btn {
+        width: 70px !important;
+        height: 70px !important;
+        font-size: 0.7rem !important;
+        padding: 10px !important;
+    }
+    
+    .main-birthday-title {
+        font-size: 1.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .wave-letter {
+        font-size: 1.5rem !important;
+    }
+    
+    .site-header {
+        padding: 1rem !important;
+        min-height: 120px !important;
+    }
+    
+    .main-content {
+        padding-top: 130px !important;
+    }
+    
+    .footer-message {
+        font-size: 0.9rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .letter-content {
+        margin: 0.5rem !important;
+        border-radius: 0 !important;
+    }
+    
+    .letter-gift {
+        width: 60px !important;
+        height: auto !important;
     }
 }

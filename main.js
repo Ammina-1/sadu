@@ -353,32 +353,34 @@ class App {
 document.addEventListener('DOMContentLoaded', () => {
     new App();
     
-    // Add bow decorations around hero text
+    // Add bow decorations around hero text (only on desktop)
     const hero = document.querySelector('.hero');
-    const bowPositions = [
-        // Left side arrow formation
-        { top: '10%', left: '-70px' },
-        { top: '40%', left: '-100px' },
-        { top: '70%', left: '-70px' },
-        // Right side arrow formation
-        { top: '10%', right: '-70px' },
-        { top: '40%', right: '-100px' },
-        { top: '70%', right: '-70px' }
-    ];
+    if (window.innerWidth > 768) {
+        const bowPositions = [
+            // Left side arrow formation
+            { top: '10%', left: '-70px' },
+            { top: '40%', left: '-100px' },
+            { top: '70%', left: '-70px' },
+            // Right side arrow formation
+            { top: '10%', right: '-70px' },
+            { top: '40%', right: '-100px' },
+            { top: '70%', right: '-70px' }
+        ];
 
-    bowPositions.forEach(position => {
-        const bow = document.createElement('img');
-        bow.src = 'bow 2.0.jpg';
-        bow.style.cssText = `
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            top: ${position.top};
-            ${position.left ? `left: ${position.left};` : `right: ${position.right};`}
-            z-index: 1;
-        `;
-        hero.appendChild(bow);
-    });
+        bowPositions.forEach(position => {
+            const bow = document.createElement('img');
+            bow.src = 'bow 2.0.jpg';
+            bow.style.cssText = `
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                top: ${position.top};
+                ${position.left ? `left: ${position.left};` : `right: ${position.right};`}
+                z-index: 1;
+            `;
+            hero.appendChild(bow);
+        });
+    }
     
     // Show birthday modal on first visit
     const hasSeenModal = localStorage.getItem('birthday_seen');
