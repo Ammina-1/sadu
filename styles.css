@@ -1235,11 +1235,34 @@ body {
 
 .heart {
     position: absolute;
-    color: #87CEEB;
-    font-size: 20px;
+    width: 20px;
+    height: 20px;
     animation: riseFade 3s ease-out forwards;
     pointer-events: none;
     user-select: none;
+}
+
+.heart::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    background: #87CEEB;
+    border-radius: 6px 6px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 6px 9px;
+}
+
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    background: #87CEEB;
+    border-radius: 6px 6px 0 0;
+    transform: rotate(45deg);
+    transform-origin: 6px 9px;
+    left: 6px;
 }
 
 @keyframes riseFade {
@@ -1266,4 +1289,50 @@ body {
     .heart {
         animation: none;
     }
+}
+
+/* === CSS-only floating hearts (no JS) === */
+.bg-hearts { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
+.bg-hearts span {
+  position: absolute; bottom: -12vh; left: 50%;
+  width: 16px; height: 16px; transform: translateX(-50%) scale(var(--s,1));
+  opacity: .9; filter: drop-shadow(0 2px 4px rgba(31,42,68,.15));
+  animation: rise var(--dur,8s) linear infinite;
+}
+.bg-hearts span::before, .bg-hearts span::after {
+  content: ""; position: absolute; width: 50%; height: 80%;
+  background: var(--c,#cfe8ff); border-radius: 50% 50% 0 0;
+}
+.bg-hearts span::before { left: 0; transform: rotate(-45deg); transform-origin: 100% 100%; }
+.bg-hearts span::after  { right: 0; transform: rotate(45deg);  transform-origin: 0 100%; }
+
+@keyframes rise {
+  0%   { transform: translate(var(--x,0), 0) scale(var(--s,1)) rotate(var(--r,0deg)); opacity: .95; }
+  100% { transform: translate(var(--x,0), -120vh) scale(calc(var(--s,1) + .2)) rotate(calc(var(--r,0deg) + 20deg)); opacity: 0; }
+}
+
+/* 20 hearts, each with different lane, delay, speed, size, color */
+.bg-hearts span:nth-child(1)  { --x:-40vw; --dur:9s;  --s:.9;  --r:-6deg;  --c:#eaf4ff; animation-delay: 0s;  }
+.bg-hearts span:nth-child(2)  { --x:-30vw; --dur:8s;  --s:1.1; --r: 4deg;  --c:#d9ecff; animation-delay: .8s; }
+.bg-hearts span:nth-child(3)  { --x:-20vw; --dur:7.5s;--s:.95; --r:-3deg;  --c:#cfe8ff; animation-delay: 1.6s;}
+.bg-hearts span:nth-child(4)  { --x:-10vw; --dur:8.5s;--s:1.05;--r: 2deg;  --c:#bcdfff; animation-delay: 2.2s;}
+.bg-hearts span:nth-child(5)  { --x: -5vw; --dur:9.2s;--s:.9;  --r:-5deg;  --c:#eaf4ff; animation-delay: 3s;  }
+.bg-hearts span:nth-child(6)  { --x:  5vw; --dur:7.8s;--s:1.15;--r: 6deg;  --c:#d9ecff; animation-delay: 3.6s;}
+.bg-hearts span:nth-child(7)  { --x: 12vw; --dur:8.7s;--s:1.0; --r:-4deg;  --c:#cfe8ff; animation-delay: 4.4s;}
+.bg-hearts span:nth-child(8)  { --x: 20vw; --dur:8.1s;--s:.95; --r: 3deg;  --c:#bcdfff; animation-delay: 5.2s;}
+.bg-hearts span:nth-child(9)  { --x: 28vw; --dur:9.4s;--s:1.2; --r:-2deg;  --c:#eaf4ff; animation-delay: 6s;  }
+.bg-hearts span:nth-child(10) { --x: 35vw; --dur:7.6s;--s:.9;  --r: 5deg;  --c:#d9ecff; animation-delay: 6.8s;}
+.bg-hearts span:nth-child(11) { --x:-35vw; --dur:8.3s;--s:1.1; --r:-6deg;  --c:#cfe8ff; animation-delay: 7.4s;}
+.bg-hearts span:nth-child(12) { --x:-25vw; --dur:9.1s;--s:1.05;--r: 4deg;  --c:#bcdfff; animation-delay: 8.1s;}
+.bg-hearts span:nth-child(13) { --x:-15vw; --dur:7.9s;--s:.95; --r:-3deg;  --c:#eaf4ff; animation-delay: 8.9s;}
+.bg-hearts span:nth-child(14) { --x: -8vw; --dur:8.6s;--s:1.1; --r: 2deg;  --c:#d9ecff; animation-delay: 9.6s;}
+.bg-hearts span:nth-child(15) { --x:  8vw; --dur:9.3s;--s:1.0; --r:-5deg;  --c:#cfe8ff; animation-delay:10.2s;}
+.bg-hearts span:nth-child(16) { --x: 16vw; --dur:7.7s;--s:.9;  --r: 6deg;  --c:#bcdfff; animation-delay:10.8s;}
+.bg-hearts span:nth-child(17) { --x: 24vw; --dur:8.2s;--s:1.15;--r:-2deg;  --c:#eaf4ff; animation-delay:11.4s;}
+.bg-hearts span:nth-child(18) { --x: 32vw; --dur:9.5s;--s:.95; --r: 3deg;  --c:#d9ecff; animation-delay:12.1s;}
+.bg-hearts span:nth-child(19) { --x: 40vw; --dur:8.4s;--s:1.08;--r:-4deg;  --c:#cfe8ff; animation-delay:12.8s;}
+.bg-hearts span:nth-child(20) { --x: 46vw; --dur:7.8s;--s:1.2; --r: 5deg;  --c:#bcdfff; animation-delay:13.4s;}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-hearts { display: none !important; }
 }
