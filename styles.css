@@ -1004,72 +1004,219 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem !important;
-        line-height: 1.2;
-        margin: 0 0 1rem;
-        padding: 0 1rem;
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
     }
     
-    .hero-subtitle {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .month-card {
-        padding: 1rem;
-        margin: 0.5rem;
-        min-height: 120px;
-    }
-    
-    .modal-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .cards-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
-    }
-    
-    .replay-btn {
-        width: 70px !important;
-        height: 70px !important;
-        font-size: 0.7rem !important;
-        padding: 10px !important;
+    .site-header {
+        padding: 0.5rem !important;
+        min-height: 100px !important;
     }
     
     .main-birthday-title {
-        font-size: 1.5rem !important;
+        font-size: 1.2rem !important;
         padding: 0.5rem !important;
     }
     
     .wave-letter {
-        font-size: 1.5rem !important;
+        font-size: 1.2rem !important;
+        display: inline-block;
     }
     
-    .site-header {
-        padding: 1rem !important;
-        min-height: 120px !important;
+    .replay-btn {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 0.6rem !important;
     }
     
     .main-content {
-        padding-top: 130px !important;
+        padding-top: 110px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .hero {
+        margin: 0 auto 2rem !important;
+        padding: 1rem !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.8rem !important;
+        padding: 1rem !important;
+    }
+    
+    .month-card {
+        padding: 0.8rem !important;
+        min-height: 100px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .card-month {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .site-footer {
+        padding: 1rem !important;
     }
     
     .footer-message {
-        font-size: 0.9rem !important;
-        padding: 0 1rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
     }
     
+    body {
+        overflow-x: hidden !important;
+    }
+    
+    .site-header {
+        padding: 0.5rem !important;
+        min-height: 80px !important;
+        overflow: hidden !important;
+    }
+    
+    .main-birthday-title {
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .wave-letter {
+        font-size: 0.9rem !important;
+        animation: none !important;
+    }
+    
+    .replay-btn {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 0.4rem !important;
+        top: -10px !important;
+    }
+    
+    .main-content {
+        padding-top: 90px !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    .hero {
+        margin: 0 auto 1.5rem !important;
+        padding: 0.5rem !important;
+        overflow: hidden !important;
+    }
+    
+    .hero-title {
+        font-size: 1.2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.8rem !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.75rem !important;
+        text-align: center !important;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.6rem !important;
+        padding: 0.5rem !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .month-card {
+        padding: 0.6rem !important;
+        min-height: 80px !important;
+        font-size: 0.8rem !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .card-month {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .site-footer {
+        padding: 0.8rem !important;
+    }
+    
+    .footer-message {
+        font-size: 0.75rem !important;
+        text-align: center !important;
+    }
+    
+    .modal-backdrop,
+    .letter-overlay {
+        padding: 0 !important;
+    }
+    
+    .modal-content,
     .letter-content {
-        margin: 0.5rem !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        max-height: none !important;
         border-radius: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .close-btn,
+    .letter-close-btn {
+        top: 10px !important;
+        right: 10px !important;
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 1.2rem !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 2px solid #FFB6C1 !important;
+        color: #333 !important;
     }
     
     .letter-gift {
-        width: 60px !important;
-        height: auto !important;
+        display: none !important;
+    }
+    
+    .sparkle-trail {
+        display: none !important;
+    }
+    
+    .unicorn {
+        display: none !important;
+    }
+    
+    /* Hide unicorn animation completely on mobile */
+    .site-header .unicorn,
+    .site-header .sparkle-trail {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure no horizontal scrolling */
+    * {
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
     }
 }

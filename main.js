@@ -250,7 +250,7 @@ const showLetterModal = (monthKey, monthLabel) => {
     };
 
     const giftFile = giftFiles[monthKey];
-    if (giftFile) {
+    if (giftFile && window.innerWidth > 768) {
         // Create 6 gifts - 3 on left, 3 on right
         const giftPositions = [
             // Left side
